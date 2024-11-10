@@ -29,21 +29,21 @@ const expenseDate = new Date().toLocaleDateString()
 
 
 
-// Income Section
+// // Income Section
 
-incomeForm.addEventListener("submit", (e)=>{
+ incomeForm.addEventListener("submit", (e)=>{
 
-    e.preventDefault(incomeAmount.value)
+   e.preventDefault()
   
-    income = parseInt(incomeAmount.value)
-
-    displayIncome.innerText = `Total Income is: ${income}`
+   income = parseInt(incomeAmount.value)
 
 
-    incomeAmount.value= ""
 
 
-})
+  
+
+
+ })
 
 
 // Expense Section
@@ -57,13 +57,14 @@ expenseForm.addEventListener("submit",(e)=>{
         amount:parseFloat(expenseAmount.value),
         category:expenseCategory.value
     }
- 
+    
     personalExpense.push(expense)
 
     expenseName.value= "";
 expenseAmount.value = ""
 
 expenseCategory.value="Food"
+
  
     updateValue()
     updateExpenceTable()
@@ -82,8 +83,16 @@ const updateValue = ()=>{
 document.getElementById("total-amount").textContent = totalExpenseAmount.toFixed(1)
 totalAmount.innerText = `Expense : ${totalExpenseAmount}`
 
+
 const balance = income-totalExpenseAmount
+
 displayBalance.textContent =`Balance is :${balance}`
+
+
+  
+
+
+
 
 }
 
@@ -98,8 +107,8 @@ displayBalance.textContent =`Balance is :${balance}`
         row.innerHTML=`
                 
              <td>${expense.date}</td>
-            <td>${expense.name}</td>
-             <td>${expense.date}</td>
+            <td>${expense.amount}</td>
+          
             <td>${expense.category }</td>
             <td><button onclick="deleteExpense(${index})">Delete</button></td>;
 
